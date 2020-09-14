@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div:hover {
+        background-color: salmon;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>View</h1>
+    <a href="{% url 'new' %}">글쓰기</a>
+    
+    <p>
+      {% for blog_ in blog %}
+      <a href="{% url 'detail' blog_.id%}" style="color: rgb(19, 40, 104); text-decoration: none">
+        <div style="border: solid 1px black">
+          <h3>{{blog_.title}}</h3>
+          <p>{{blog_.pub_date}}</p>
+         <p>{{content}}</p>
+         <a href="{% url 'update' blog_.id %}">수정하기</a>
+         <a href="{% url 'delete' blog_.id %}">삭제하기</a>
+        </div>
+      </a>
+      
+      {% endfor %}
+    </p>
+  </body>
+</html>
